@@ -12,7 +12,7 @@ class Numerical():
         :return:
         '''
         return 3*x*x
-    # 欧拉求解
+    # 一般欧拉法求解
     def Euler(self,h,x0,y0,n):
         '''
         :param h: 步长
@@ -54,6 +54,21 @@ class Numerical():
             save[1].append(y)
 
         return save[1]
+    # Adams-Bashforth-Moulton
+    def ABM(self, h,x0,y0,n):
+        save = [[], []]
+        save[0].append(x0)
+        save[1].append(y0)
+        for i in range(1, n + 1):
+            x = save[0][-1]
+            y = save[1][-1]
+            # 计算迭代值
+            y = y + h * (self.function(x) + self.function(x + h)) / 2
+            x = x + h
+            # 保存每一次迭代值
+            save[0].append(x)
+            save[1].append(y)
+
     # tao is constant
     def t_constant(self, h, x0, y0, tao, xgm, m, n):
         '''
@@ -95,6 +110,10 @@ class Numerical():
             for i in len(m+1,n+1):
                 v.append(xgm*yp[i-m+2]+(1-xgm)*y[i-m+1])
             return v
+
     # tao is varying
-    def tao(self,tall):
-        return tall
+    def tao(self,t):
+        # τ是关于t的函数
+        # 例如τ=t^2
+        return t*t
+        
