@@ -18,3 +18,10 @@ f  反之带有时延的函数
 
 ## 固定时延
 
+yp = yn  + h * f(xn, yn)
+
+yn = yn + h * ( f(xn, yn) + f( xn+h, yp ) ) / 2
+
+y(t) 给定
+
+f = dy(y)/dt 
