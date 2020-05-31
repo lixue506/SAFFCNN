@@ -7,25 +7,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-def fai1(t):
-    return math.cos(3.14*t)/(np.exp(t)+3)
-    # return math.cos(t)/(3*t+0.31)
-
-def fai2(t):
-    return math.sin(5.26*t)/(np.exp(t)+0.314)
-    # return math.sin(t)/(t+0.356)
-
-def Tao(t):
-    result = 6.38 * abs(np.sin(t))
-    return result 
-
-def Activation(x):
-
-    result = 1 / (1 + np.exp(-x))
-    
-    return result
-
-
 D = [0.786, 1]
 A = np.array([[2,-0.11],[-5,2.2]])
 B = np.array([[-1.6, -0.1],[-0.18,-2.4]])
@@ -38,8 +19,29 @@ Yita = np.array([0.2, 0.4])
 C = np.array([[0.1, 0.02],[0.1, 0.27]])
 V = np.array([1, 1])
 xs = np.array([0.1, 0.4])
-X = [fai1, fai2]
 
+
+def fai1(t):
+    return math.cos(t*3.14)/(np.exp(t)+3)
+    #              10*t*Alpha[0][0]
+    # return math.cos(t)/(3*t+0.31)
+
+def fai2(t):
+    return math.sin(t*5.26)/(np.exp(t)+0.314)
+    #              10*t*Alpha[1][1]
+    # return math.sin(t)/(t+0.356)
+
+def Tao(t):
+    result = 6.38 * abs(np.sin(t))
+    return result 
+
+def Activation(x):
+
+    result = 1 / (1 + np.exp(-x))
+    
+    return result
+
+X = [fai1, fai2]
 def Lung(s, i):
     result = I[i] - D[i] * X[i](s)
     t = 0
@@ -66,27 +68,37 @@ def Show():
     for i in range(2):
         y1 = [Lung(k,i) for k in s]      # 曲线 y1
         Y.append(y1)
-        plt.xlabel('Time/second')
-        plt.ylabel('Y')
-        plt.plot(s, y1) # 绘制曲线 y1
-        plt.savefig('./y%s.jpg' % i)
-        plt.show()
+    #     plt.xlabel('Time/second')
+    #     plt.ylabel('Y')
+    #     plt.plot(s, y1) # 绘制曲线 y1
+    #     # plt.savefig('./y%s.jpg' % i)
+    #     plt.show()
 
-    err = [abs(Y[0][i]-Y[1][i]) for i in range(len(Y[0]))]
-    # print(err)
-    # x1,x2的函数图像
-    plt.xlabel('Time/second')
-    plt.ylabel('运动轨迹Y')
-    plt.plot(s,Y[0], color='green',label="x1", ls='-.')
-    plt.plot(s,Y[1], color='red',label="x2", ls=':')
-    plt.savefig('./Compare.jpg')
-    plt.show()
-    # 显示误差
+    # err = [abs(Y[0][i]-Y[1][i]) for i in range(len(Y[0]))]
+    # # print(err)
+    # # x1,x2的函数图像
+    
+    plt.plot(s,Y[0], label="$y1$", color='green', ls='-.')
+    plt.plot(s,Y[1], label="$y2$", color='red', ls=':')
     plt.xlabel('Time/second')
     plt.ylabel('Error')
-    plt.plot(s,err)
-    plt.savefig('./Error.jpg')
+    plt.legend()
+    plt.savefig('./Compare.jpg')
+   
     plt.show()
+    # 显示误差
+    # plt.xlabel('Time/second')
+    # plt.ylabel('Error')
+    # plt.plot(s,err)
+    # # plt.savefig('./Error.jpg')
+    # plt.show()
+    # 显示误差
+    # plt.title("α = 0.55")
+    # plt.xlabel('x1')
+    # plt.ylabel('x2')
+    # plt.plot(Y[0],Y[1])
+    # # plt.savefig('./xx图α=055.jpg' )
+    # plt.show()
 
 
 if __name__ == "__main__":
