@@ -107,7 +107,12 @@ void F()
     //cout<<tgammaf(3-alpha)<<endl;
 }
 */
-
+float yn_save[10000];//
+float vn_save[10000];//矫正预测值
+float ynp_save[10000];//预测值
+float f_save[10000];// 预测函数值
+int index = 0;
+int ind = 0;
 float fai_k(float tn)// 初始值函数
 {
     return tn*tn-tn;
@@ -198,13 +203,6 @@ float yn(float t0, float y0, float h,int n)// 提前调用，返回所有值
     }
     return y[1][n];
 }
-
-float y_save[10000];
-float vn_save[10000];
-float ynp_save[10000];
-float f_save[10000];
-int index = 0;
-int ind = 0;
 
 float y_varying()// 调用以上函数
 {
