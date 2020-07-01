@@ -1,4 +1,5 @@
 '''
+实例2
 确切解
 完成
 '''
@@ -68,30 +69,37 @@ def Show():
     for i in range(2):
         y1 = [Lung(k,i) for k in s]      # 曲线 y1
         Y.append(y1)
-    #     plt.xlabel('Time/second')
-    #     plt.ylabel('Y')
-    #     plt.plot(s, y1) # 绘制曲线 y1
-    #     # plt.savefig('./y%s.jpg' % i)
-    #     plt.show()
+        # plt.xlabel('Time/second')
+        # plt.ylabel('Y')
+        # plt.plot(s, y1) # 绘制曲线 y1
+        # # plt.savefig('./y%s.jpg' % i)
+        # plt.show()
 
-    # err = [abs(Y[0][i]-Y[1][i]) for i in range(len(Y[0]))]
+    err = [abs(Y[0][i]-Y[1][i]) for i in range(len(Y[0]))]
     # # print(err)
     # # x1,x2的函数图像
     
     plt.plot(s,Y[0], label="$y1$", color='green', ls='-.')
     plt.plot(s,Y[1], label="$y2$", color='red', ls=':')
-    plt.xlabel('Time/second')
-    plt.ylabel('Error')
+    plt.xlabel('Time')
+    plt.ylabel('y1,y2')
+    plt.plot(12.59, 1.034, 'om')
+    plt.annotate("Time", (12.59,1.034), 
+             xytext=(15.59,1.1),arrowprops=dict(arrowstyle='->'))
     plt.legend()
     plt.savefig('./Compare.jpg')
-   
     plt.show()
+
     # 显示误差
-    # plt.xlabel('Time/second')
-    # plt.ylabel('Error')
-    # plt.plot(s,err)
-    # # plt.savefig('./Error.jpg')
-    # plt.show()
+    plt.xlabel('Time')
+    plt.ylabel('Error')
+    plt.plot(s,err)
+    plt.plot(12.59, 0, 'om')
+    plt.annotate("Time", (12.59,0), 
+             xytext=(12.59,0.1),arrowprops=dict(arrowstyle='->'))
+    plt.savefig('./Error.jpg')
+    plt.show()
+
     # 显示误差
     # plt.title("α = 0.55")
     # plt.xlabel('x1')

@@ -55,7 +55,6 @@ class cDt():
                 result += self.yn[0] / K
             else:
                 result += self.fai( k*self.h, e) * pow(Tnk, k) / K
-            print(result)
         t = 0
         for j in range(n+1):
             # 有待补充内容
