@@ -83,28 +83,28 @@ def Show():
     plt.plot(s,Y[1], label="$y2$", color='red', ls=':')
     plt.xlabel('Time')
     plt.ylabel('y1,y2')
-    plt.plot(12.59, 1.034, 'om')
-    plt.annotate("Time", (12.59,1.034), 
-             xytext=(15.59,1.1),arrowprops=dict(arrowstyle='->'))
+    # plt.plot(12.59, 1.034, 'om')
+    # plt.annotate("Time", (12.59,1.034), 
+    #          xytext=(15.59,1.1),arrowprops=dict(arrowstyle='->'))
     plt.legend()
-    plt.savefig('./Compare.jpg')
+    # plt.savefig('./Compare.jpg')
     plt.show()
 
     # 显示误差
     plt.xlabel('Time')
     plt.ylabel('Error')
     plt.plot(s,err)
-    plt.plot(12.59, 0, 'om')
-    plt.annotate("Time", (12.59,0), 
-             xytext=(12.59,0.1),arrowprops=dict(arrowstyle='->'))
-    plt.savefig('./Error.jpg')
+    # plt.plot(12.59, 0, 'om')
+    # plt.annotate("Time", (12.59,0), 
+    #          xytext=(12.59,0.1),arrowprops=dict(arrowstyle='->'))
+    # plt.savefig('./Error.jpg')
     plt.show()
 
     # 显示误差
-    # plt.title("α = 0.55")
-    # plt.xlabel('x1')
-    # plt.ylabel('x2')
-    # plt.plot(Y[0],Y[1])
+    plt.title("α = 0.55")
+    plt.xlabel('x1')
+    plt.ylabel('x2')
+    plt.plot(Y[0],Y[1])
     # # plt.savefig('./xx图α=055.jpg' )
     # plt.show()
 
